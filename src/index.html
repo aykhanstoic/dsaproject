@@ -7,8 +7,24 @@
 </head>
 
 <body>
+    <h2>Browser History Manager</h2>
 
-    <p>the application is meant to be used in the console :) (F12)</p>
+    <h3>Import Browser History</h3>
+
+    <input
+        type="file"
+        id="historyFile"
+        accept=".txt"
+>
+
+    <button id="importHistoryButton">
+        Import History
+    </button>
+
+    <p id="importStatus"></p>
+    <h3>Imported Browser History</h3>
+
+    <div id="historyDisplay"></div>
 
     <script src="dataLoader.js"></script>
     <script src="app.js"></script>
