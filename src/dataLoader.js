@@ -84,7 +84,7 @@ function displayHistoryOnPage() {
     // Clear previous display
     display.innerHTML = "";
 
-    var node = headNode;
+    var node = browserHistory.head;
     var index = 0;
 
     // Traverse the linked list
@@ -98,7 +98,7 @@ function displayHistoryOnPage() {
         page.style.borderRadius = "6px";
 
         // Mark the current page
-        if (node === currentNodePage) {
+        if (node === browserHistory.curNode) {
             page.innerHTML = "<strong>[" + index +
                 "] " + node.url + " ← CURRENT PAGE</strong>";
 
@@ -116,12 +116,11 @@ function displayHistoryOnPage() {
 }
 
     //brows. history update
-    headNode = newHead;
-    currentNodePage = newCurrent;
+    browserHistory.loadNodes(newHead, newCurrent);
 
     console.log("History imported successfully!");
 
-    printPages();
+    browserHistory.display_history();
 
     displayHistoryOnPage();
 
