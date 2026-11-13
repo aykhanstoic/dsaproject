@@ -3,7 +3,7 @@ function parseHistoryText(fileContent) {
     var lines = fileContent.split(/\r?\n/);
 
     lines = lines.map(line => line.trim())
-                 .filter(line => line !== "");
+        .filter(line => line !== "");
 
     if (lines.length === 0) {
         throw new Error("The file is empty!");
@@ -39,7 +39,7 @@ function parseHistoryText(fileContent) {
 }
 
 
-    //importing the history
+//importing the history
 async function importHistoryFromFile(file) {
 
     if (!file) {
@@ -77,6 +77,20 @@ async function importHistoryFromFile(file) {
         previousNode = newNode;
     }
 
+
+    //brows. history update
+    browserHistory.loadNodes(newHead, newCurrent);
+
+    console.log("History imported successfully!");
+
+    browserHistory.display_history();
+
+    displayHistoryOnPage();
+
+    return true;
+}
+
+
 function displayHistoryOnPage() {
 
     var display = document.getElementById("historyDisplay");
@@ -103,8 +117,7 @@ function displayHistoryOnPage() {
                 "] " + node.url + " ← CURRENT PAGE</strong>";
 
             page.style.backgroundColor = "#d4edda";
-        }
-        else {
+        } else {
             page.textContent = "[" + index + "] " + node.url;
         }
 
@@ -115,28 +128,18 @@ function displayHistoryOnPage() {
     }
 }
 
-    //brows. history update
-    browserHistory.loadNodes(newHead, newCurrent);
 
-    console.log("History imported successfully!");
-
-    browserHistory.display_history();
-
-    displayHistoryOnPage();
-
-    return true;
-}
 
 
 //picking file below
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
 
     var fileInput = document.getElementById("historyFile");
     var importButton = document.getElementById("importHistoryButton");
     var status = document.getElementById("importStatus");
 
-    importButton.addEventListener("click", async function () {
+    importButton.addEventListener("click", async function() {
 
         var file = fileInput.files[0];
 
@@ -153,8 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             await importHistoryFromFile(file);
             status.textContent = "History imported successfully!";
-        }
-        catch (error) {
+        } catch (error) {
             status.textContent = "Error: " + error.message;
             console.error(error);
         }

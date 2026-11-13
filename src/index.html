@@ -11,11 +11,7 @@
 
     <h3>Import Browser History</h3>
 
-    <input
-        type="file"
-        id="historyFile"
-        accept=".txt"
->
+    <input type="file" id="historyFile" accept=".txt">
 
     <button id="importHistoryButton">
         Import History
@@ -24,7 +20,21 @@
     <p id="importStatus"></p>
     <h3>Imported Browser History</h3>
 
+    <p>Please use Console for commands :)</p>
+    <ul>
+        <li>browserHistory.visit(url)</li>
+        <li>browserHistory.back(steps)</li>
+        <li>browserHistory.forward(steps)</li>
+        <li>browserHistory.delete_history()</li>
+        <li>browserHistory.deleteUrl(url)</li>
+        <li>browserHistory.restore()</li>
+        <li>browserHistory.display_history(), in console</li>
+        <li>displayHistoryOnPage(), in html</li>
+
+    </ul>
     <div id="historyDisplay"></div>
+
+
 
     <script src="dataLoader.js"></script>
     <script src="app.js"></script>

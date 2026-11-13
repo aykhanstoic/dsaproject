@@ -51,6 +51,8 @@ class BrowserHistory {
     capacity;
     deleted;
 
+
+
     constructor(homepage, capacity = 50) {
         if (capacity < 1) throw new Error("capacity must be at least 1");
 
@@ -93,7 +95,6 @@ class BrowserHistory {
         this.size++;
 
         if (this.size > this.capacity) this.removeOldest();
-
         return url;
     }
 
@@ -138,6 +139,7 @@ class BrowserHistory {
 
         var text = lines.join("\n");
         console.log(text);
+
         return text;
     }
 
@@ -272,7 +274,7 @@ class BrowserHistory {
 }
 
 
-function downloadHistory(history, fileName = "history.txt") {
+function downloadHistory(history = browserHistory, fileName = "history.txt") {
     var blob = new Blob([history.toText()], { type: "text/plain" });
     var link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
